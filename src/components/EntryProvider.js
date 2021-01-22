@@ -14,25 +14,25 @@ export const EntryProvider = props => {
   const [entry, setEntry] = useState({})
 
   const getEntries = () => {
-    return fetch("http://localhost:8088/entries")
+    return fetch("http://localhost:8088/notes")
       .then(res => res.json())
       .then(setEntries);
   };
 
   const searchEntries = (searchTerm) => {
-    return fetch(`http://localhost:8088/entries?q=${searchTerm}`)
+    return fetch(`http://localhost:8088/notes?q=${searchTerm}`)
       .then(res => res.json())
       .then(setEntries);
   };
 
-  const getEntryById = id => {
-    return fetch(`http://localhost:8088/entries/${id}`)
-      .then(res => res.json())
-      .then(setEntry);;
-  };
+  // const getEntryById = id => {
+  //   return fetch(`http://localhost:8088/notes/${id}`)
+  //     .then(res => res.json())
+  //     .then(setEntry);;
+  // };
 
   const addEntry = Entry => {
-    return fetch("http://localhost:8088/entries", {
+    return fetch("http://localhost:8088/notes", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -41,21 +41,21 @@ export const EntryProvider = props => {
     }).then(getEntries);
   };
 
-  const deleteEntry = entry => {
-    return fetch(`http://localhost:8088/entries/${entry.id}`, {
-      method: "DELETE"
-    }).then(getEntries);
-  };
+  // const deleteEntry = entry => {
+  //   return fetch(`http://localhost:8088/notes/${entry.id}`, {
+  //     method: "DELETE"
+  //   }).then(getEntries);
+  // };
 
-  const updateEntry = entry => {
-    return fetch(`http://localhost:8088/entries/${entry.id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(entry)
-    }).then(getEntries);
-  };
+  // const updateEntry = entry => {
+  //   return fetch(`http://localhost:8088/notes/${entry.id}`, {
+  //     method: "PUT",
+  //     headers: {
+  //       "Content-Type": "application/json"
+  //     },
+  //     body: JSON.stringify(entry)
+  //   }).then(getEntries);
+  // };
 
   return (
     <EntryContext.Provider
@@ -63,9 +63,9 @@ export const EntryProvider = props => {
         entries,
         getEntries,
         addEntry,
-        deleteEntry,
-        updateEntry,
-        getEntryById,
+        // deleteEntry,
+        // updateEntry,
+        // getEntryById,
         entry,
         setEntry,
         searchEntries

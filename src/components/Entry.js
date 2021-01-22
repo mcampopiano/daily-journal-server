@@ -3,7 +3,7 @@ import { EntryContext } from "./EntryProvider";
 
 export const Entry = ({ entry, moods }) => {
 
-  const mood = moods.find(m => m.id === entry.moodId)
+  const mood = moods.find(m => parseInt(m.id) === parseInt(entry.moodId))
   const { deleteEntry, getEntryById } = useContext(EntryContext)
 
   return (
