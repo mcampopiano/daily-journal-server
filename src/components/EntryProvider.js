@@ -19,11 +19,11 @@ export const EntryProvider = props => {
       .then(setEntries);
   };
 
-  // const searchEntries = (searchTerm) => {
-  //   return fetch(`http://localhost:8088/notes?q=${searchTerm}`)
-  //     .then(res => res.json())
-  //     .then(setEntries);
-  // };
+  const searchEntries = (searchTerm) => {
+    return fetch(`http://localhost:8088/notes?q=${searchTerm}`)
+      .then(res => res.json())
+      .then(setEntries);
+  };
 
   // const getEntryById = id => {
   //   return fetch(`http://localhost:8088/notes/${id}`)
@@ -31,15 +31,15 @@ export const EntryProvider = props => {
   //     .then(setEntry);;
   // };
 
-  // const addEntry = Entry => {
-  //   return fetch("http://localhost:8088/notes", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json"
-  //     },
-  //     body: JSON.stringify(Entry)
-  //   }).then(getEntries);
-  // };
+  const addEntry = Entry => {
+    return fetch("http://localhost:8088/notes", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(Entry)
+    }).then(getEntries);
+  };
 
   // const deleteEntry = entry => {
   //   return fetch(`http://localhost:8088/notes/${entry.id}`, {
@@ -62,7 +62,7 @@ export const EntryProvider = props => {
       value={{
         entries,
         getEntries,
-        // addEntry,
+        addEntry,
         // deleteEntry,
         // updateEntry,
         // getEntryById,
